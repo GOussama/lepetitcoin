@@ -41,43 +41,48 @@ export default function () {
             //Add redirection
             history.push('/');
         } else {
-            setFormValue({ ...formValue, errorMessage: 'authentication failed' });
+            setFormValue({ ...formValue, errorMessage: 'Identifiant ou mot de passe incorrecte' });
         }
     };
 
     return (
-        <div>
-            <h3>Identify yourself</h3>
+        <div className="mt-5">
+            <Row>
+                <Col md="3"></Col>
+                <Col md="6">
+                    <div className="mb-4">
+                        <span className="mb-5">S'identifier ou </span><a href="/Inscription">créer un compte</a>
+                    </div>                    
 
-            <form onSubmit={onConnexion}>
-                <Row className="m-2">
-                    <Col md="4">
-                        <label htmlFor="name">Login</label>
-                    </Col>
-                    <Col md="8">
-                        <input type="text" className="form-control" id="login" placeholder="Enter your login or your email" name="login" onChange={onInputChanged} />
-                    </Col>
-                </Row>
-                <Row className="m-2">
-                    <Col md="4">
-                        <label htmlFor="password">Password</label>
-                    </Col>
-                    <Col md="8">
-                        <input type="password" className="form-control" id="password" placeholder="Enter your password" name="password" onChange={onInputChanged} />
-                    </Col>
-                </Row>
-                <Row className="m-2">
-                    <Col md="4"></Col>                    
-                    <Col md="8">
-                        {formValue.errorMessage && <div className="errorMessage">{formValue.errorMessage}</div>}
-                    </Col>
-                </Row>
-                <Row className="m-2">
-                    <Col md="12">
-                        <input className="btn btn-primary" type="submit" value="submit" />
-                    </Col>
-                </Row>
-            </form>
+                    <form onSubmit={onConnexion}>
+                        <Row className="mt-2">
+                            <Col md="4">
+                                <label htmlFor="name">Identifiant</label>
+                            </Col>
+                            <Col md="8">
+                                <input type="text" className="form-control" id="login" placeholder="Login ou email" name="login" onChange={onInputChanged} />
+                            </Col>
+                        </Row>
+                        <Row className="mt-2">
+                            <Col md="4">
+                                <label htmlFor="password">Mot de passe</label>
+                            </Col>
+                            <Col md="8">
+                                <input type="password" className="form-control" id="password" placeholder="Mot de passe" name="password" onChange={onInputChanged} />
+                            </Col>
+                        </Row>
+                        <Row className="mt-2">
+                            <Col md="4">
+                                <input className="btn btn-primary" type="submit" value="submit" />
+                            </Col>                            
+                            <Col md="8">
+                                {formValue.errorMessage && <div className="errorMessage">{formValue.errorMessage}</div>}
+                            </Col>
+                        </Row>
+                    </form>
+                </Col>
+                <Col md="3"></Col>
+            </Row>
         </div>
     );
 }
