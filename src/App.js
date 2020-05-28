@@ -1,24 +1,26 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route , Switch} from 'react-router-dom';
-import Inscription from './Inscription/Inscription';
+import Inscription from './inscription/Inscription';
 import AnnoncesList from './Annonces/AnnoncesList/AnnoncesList'
 import Connexion from './connexion/Connexion';
+import { NavigationWithHistory } from './navigation/Navigation';
 
 
 function App() {
   return (
-    <div className="container">      
+    <div className="container">
       <Router>
+        <NavigationWithHistory/>
         <Switch>
           <Route path="/Inscription">
             <Inscription/>
           </Route>
-          <Route path="/">
-            <AnnoncesList />
-          </Route>
           <Route path="/Connexion">
             <Connexion/>
+          </Route>
+          <Route path="/">
+            <AnnoncesList />
           </Route>
         </Switch>        
       </Router>
