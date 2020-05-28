@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route , Switch} from 'react-router-dom';
 import Inscription from './inscription/Inscription';
+import Connexion from './connexion/Connexion';
 
 function App() {
   return (
@@ -10,6 +11,9 @@ function App() {
         <Switch>
           <Route path="/Inscription">
             <Inscription/>
+          </Route>
+          <Route path="/Connexion">
+            <Connexion/>
           </Route>
         </Switch>        
       </Router>

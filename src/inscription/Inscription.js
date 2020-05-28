@@ -165,7 +165,7 @@ export default function Inscription() {
                 </div>
 
                 <div className="m-2">
-                    <input className="btn btn-default" type="submit" value="submit" />
+                    <input className="btn btn-primary" type="submit" value="submit" />
                 </div>
             </form>
         </div>
