@@ -11,9 +11,9 @@ const Navigation = () => {
                 <Nav.Link href="/">Mes annonces (5)</Nav.Link>
                 <Nav.Link href="/">Nouvelle annonce</Nav.Link>
             </Nav>
+            <Navbar.Text className="mr-2">Benjema est connecté</Navbar.Text>
             <Nav className="mr-right">
-                <Nav.Link href="/">Benjema</Nav.Link>
-                <Button variant="outline-info">Log out</Button>
+                <Button variant="outline-info">Déconnexion</Button>
             </Nav>
         </Navbar>
     );

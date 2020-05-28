@@ -73,7 +73,7 @@ export default function () {
                         </Row>
                         <Row className="mt-2">
                             <Col md="4">
-                                <input className="btn btn-primary" type="submit" value="submit" />
+                                <input className="btn btn-primary" type="submit" value="Valider" />
                             </Col>                            
                             <Col md="8">
                                 {formValue.errorMessage && <div className="errorMessage">{formValue.errorMessage}</div>}

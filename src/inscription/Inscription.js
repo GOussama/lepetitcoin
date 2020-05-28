@@ -139,7 +139,7 @@ export default function Inscription() {
                 <Row>
                     <Col>
                         <div className="form-group">
-                            <label htmlFor="name">Nome</label>
+                            <label htmlFor="name">Nom</label>
                             <input type="text" className="form-control invalid" id="name" placeholder="nom" name="name" onChange={onInputChanged} />
                             <span className="errorMessage">{formError.name !== '' && formError.name}</span>
                         </div>
