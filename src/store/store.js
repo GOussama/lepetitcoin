@@ -1,4 +1,10 @@
-import { createStore } from "redux";
-import annonceDataReducer from "./reducer";
+import { configureStore } from '@reduxjs/toolkit';
+import userReducer from '../reducer/userSlice';
+import annoncesReducer from '../reducer/annoncesSlice';
 
-export default createStore(annonceDataReducer);
+export default configureStore({
+    reducer: {
+        user: userReducer,
+        annonces: annoncesReducer,
+    }
+});

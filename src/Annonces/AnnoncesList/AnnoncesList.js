@@ -1,38 +1,37 @@
-import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import { addAnnonce } from "../../store/action";
-import { Provider, connect } from "react-redux";
+import React, { useState } from "react";
+import { selectValue, add } from '../../reducer/annoncesSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
-const mapStateToProps = (state) => {
-  const annonces = state;
-  console.log("state from mapStateToProps : ", state);
+export default function AnnoncesList() {
 
-  return annonces;
-};
+  const annonces = useSelector(selectValue);
+  const dispatch = useDispatch();
 
-class AnnoncesList extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    console.log("props from consctruc : ", this.props);
-    this.handleClick = this.handleClick.bind(this);
+  const defaultValue = { title: '' };
+  const [formValue, setFormValue] = useState(defaultValue);
+
+  const onInputChanged = (e) => {
+    const inputValue = e.target.value;
+    const inputName = e.target.name;
+    setFormValue({ ...formValue, [inputName]: inputValue })
   }
-
-  handleClick() {
-    this.props.addAnnonce({id:3,title:"third"});
-  }
-
-  render() {
   
-    console.log("props : ", this.props);
-    return (
-      <div className="row">
-        <div className="col-md-12">
-        <h1>List des annonces est {this.props.annonces.length}</h1>
-          <button onClick={this.handleClick}>Activate Lasers</button>
-        </div>
-      </div>
-    );
-  }
-}
+  const addAnnonce = annonce => {
+    const { title } = formValue;
+    dispatch(add({id: annonces.length, title}));
+  };
 
-export default connect(mapStateToProps, { addAnnonce })(AnnoncesList);
+  return (
+    <div>
+      <div className="form-group">
+        <label htmlFor="title">Title:</label>
+        <input type="text" className="form-control" id="title" name="title" onChange={onInputChanged}/>
+      </div>
+      <button className="btn btn-primary" onClick={addAnnonce}>Ajouter</button>
+
+      <div>
+        {annonces.map(annonce => <div key={annonce.id}>{annonce.title}</div>)}
+      </div>
+    </div>
+  );
+}

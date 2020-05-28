@@ -16,11 +16,11 @@ function App({count}) {
           <Route path="/Inscription">
             <Inscription/>
           </Route>
-          <Route path="/">
-            <AnnoncesList count={count} />
-          </Route>
           <Route path="/Connexion">
             <Connexion />
+          </Route>
+          <Route path="/">
+            <AnnoncesList count={count} />
           </Route>
           <Route path="/">
             <AnnoncesList />
