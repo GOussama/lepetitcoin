@@ -6,7 +6,7 @@ import AnnoncesList from './Annonces/AnnoncesList/AnnoncesList'
 import Connexion from './connexion/Connexion';
 
 
-function App() {
+function App({count}) {
   return (
     <div className="container">      
       <Router>
@@ -15,10 +15,10 @@ function App() {
             <Inscription/>
           </Route>
           <Route path="/">
-            <AnnoncesList />
+            <AnnoncesList count={count} />
           </Route>
           <Route path="/Connexion">
-            <Connexion/>
+            <Connexion />
           </Route>
         </Switch>        
       </Router>
