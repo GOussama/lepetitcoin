@@ -1,9 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route , Switch} from 'react-router-dom';
 import Inscription from './Inscription/Inscription';
 import AnnoncesList from './Annonces/AnnoncesList/AnnoncesList'
+import Connexion from './connexion/Connexion';
+
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
           </Route>
           <Route path="/">
             <AnnoncesList />
+          </Route>
+          <Route path="/Connexion">
+            <Connexion/>
           </Route>
         </Switch>        
       </Router>
