@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './Inscription.css';
 import { Row, Col } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../reducer/userSlice'
 
 export default function Inscription() {
+
+    const dispatch = useDispatch();
     const history = useHistory();
 
     const defaultValue = {
@@ -106,11 +110,9 @@ export default function Inscription() {
         e.preventDefault();
 
         if (validateAllInput()) {
-            //Call callback function of App.js
-
-            //Add localStorage
-            localStorage.setItem('isAuthenticated', true);
-            localStorage.setItem('login', formValue.email);
+            const {name, firstname, email, sex, dateOfBirth} = formValue;
+            localStorage.setItem('login', email);
+            dispatch(addUser({ name, firstname, email, sex, dateOfBirth }));
 
             //Add redirection
             history.push('/');

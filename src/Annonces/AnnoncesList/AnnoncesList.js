@@ -19,13 +19,14 @@ export default function AnnoncesList() {
   const addAnnonce = annonce => {
     const { title } = formValue;
     dispatch(add({id: annonces.length, title}));
+    setFormValue({title: ''});
   };
 
   return (
     <div>
       <div className="form-group">
         <label htmlFor="title">Title:</label>
-        <input type="text" className="form-control" id="title" name="title" onChange={onInputChanged}/>
+        <input type="text" className="form-control" id="title" value={formValue.title} name="title" onChange={onInputChanged}/>
       </div>
       <button className="btn btn-primary" onClick={addAnnonce}>Ajouter</button>
 

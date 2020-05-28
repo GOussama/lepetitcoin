@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
+import { connection } from '../reducer/userSlice';
+import { useDispatch } from 'react-redux';
 
 export default function () {
 
+    const dispatch = useDispatch()    ;
     const history = useHistory();
 
     const defaultValue = {
@@ -21,22 +24,22 @@ export default function () {
 
     const identifyUser = () => {
         const { login, password } = formValue;
-        console.log('login :', login);
-        console.log('password :', password);
-        if ((login === 'test') && (password === 'test')) {
+        if (login !== '' && password !== '')//TODO : more complex logic
             return true;
-        }
         return false;
     }
 
     const onConnexion = (e) => {
         e.preventDefault();
-        if (identifyUser()) {
-            //Call callback function of App.js
-
-            //Add localStorage
-            localStorage.setItem('isAuthenticated', true);
-            localStorage.setItem('login', formValue.email);
+        if (identifyUser()) {         
+            localStorage.setItem('login', formValue.login);   
+            dispatch(connection({
+                name: 'randomName',
+                firstname: 'randomFirstName',
+                email: formValue.login,
+                sex: 'male',
+                dateOfBirth: '2020/02/02'
+            }));
 
             //Add redirection
             history.push('/');
