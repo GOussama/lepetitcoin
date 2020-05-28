@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './Inscription.css';
+import { Row, Col } from 'react-bootstrap';
 
 export default function Inscription() {
     const history = useHistory();
@@ -117,56 +118,74 @@ export default function Inscription() {
     };
 
     return (
-        <div>
-            <h3>Register a new user</h3>
+        <div className="mt-4">
+            <div className="mb-4">
+                <span className="mb-5">S'inscrire ou </span><a href="/Connexion">s'identifier</a>
+            </div> 
             <div className="m-3">
-                <div>Summary of your info :</div>
-                <div>Name : {formValue.name}</div>
-                <div>Firstname : {formValue.firstname}</div>
+                <div>Résumé de vos informations :</div>
+                <div>Nom : {formValue.name}</div>
+                <div>Prénom : {formValue.firstname}</div>
                 <div>Email : {formValue.email}</div>
                 <div>Sex : {formValue.sex}</div>
-                <div>DateOfBirth : {formValue.dateOfBirth}</div>
+                <div>Date de naissance : {formValue.dateOfBirth}</div>
             </div>
 
             <form onSubmit={submitForm}>
-                <div className="form-group">
-                    <label htmlFor="name">Name</label>
-                    <input type="text" className="form-control invalid" id="name" placeholder="Enter your name" name="name" onChange={onInputChanged} />
-                    <span className="errorMessage">{formError.name !== '' && formError.name}</span>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="firstname">Firstname</label>
-                    <input type="text" className="form-control" id="firstname" placeholder="Enter your firstname" name="firstname" onChange={onInputChanged} />
-                    <span className="errorMessage">{formError.firstname !== '' && formError.firstname}</span>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input type="email" className="form-control" id="email" placeholder="Enter your email" name="email" onChange={onInputChanged} />
-                    <span className="errorMessage">{formError.email.length > 0 && formError.email[formError.email.length - 1] !== '' && formError.email[formError.email.length - 1]}</span>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="sex">Sex</label>
-                    <select className="form-control" id="sex" name="sex" onChange={e => onInputChanged(e, [isRequired])}>
-                        <option value="">Select your sex</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-                    <span className="errorMessage">{formError.sex !== '' && formError.sex}</span>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="dateOfBirth">Date of birth</label>
-                    <input type="date" className="form-control" id="dateOfBirth" placeholder="Enter your date of birth" name="dateOfBirth" onChange={onInputChanged} />
-                    <span className="errorMessage">{formError.dateOfBirth.length > 0 && formError.dateOfBirth[formError.dateOfBirth.length - 1] !== '' && formError.dateOfBirth[formError.dateOfBirth.length - 1]}</span>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input type="password" className="form-control" id="password" placeholder="Enter your password" name="password" onChange={onInputChanged} />
-                    <span className="errorMessage">{formError.password.length > 0 && formError.password[formError.password.length - 1] !== '' && formError.password[formError.password.length - 1]}</span>
-                </div>
-
                 <div className="m-2">
-                    <input className="btn btn-primary" type="submit" value="submit" />
+                    <input className="btn btn-primary" type="submit" value="Valider" />
                 </div>
+                <hr/>
+                <Row>
+                    <Col>
+                        <div className="form-group">
+                            <label htmlFor="name">Nome</label>
+                            <input type="text" className="form-control invalid" id="name" placeholder="nom" name="name" onChange={onInputChanged} />
+                            <span className="errorMessage">{formError.name !== '' && formError.name}</span>
+                        </div>
+                    </Col>
+                    <Col>
+                        <div className="form-group">
+                            <label htmlFor="firstname">Prénom</label>
+                            <input type="text" className="form-control" id="firstname" placeholder="prénom" name="firstname" onChange={onInputChanged} />
+                            <span className="errorMessage">{formError.firstname !== '' && formError.firstname}</span>
+                        </div>
+                    </Col>
+                    <Col>
+                        <div className="form-group">
+                            <label htmlFor="email">Email</label>
+                            <input type="email" className="form-control" id="email" placeholder="Enter your email" name="email" onChange={onInputChanged} />
+                            <span className="errorMessage">{formError.email.length > 0 && formError.email[formError.email.length - 1] !== '' && formError.email[formError.email.length - 1]}</span>
+                        </div>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <div className="form-group">
+                            <label htmlFor="sex">Sex</label>
+                            <select className="form-control" id="sex" name="sex" onChange={e => onInputChanged(e, [isRequired])}>
+                                <option value="">Select your sex</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                            <span className="errorMessage">{formError.sex !== '' && formError.sex}</span>
+                        </div>
+                    </Col>
+                    <Col>
+                        <div className="form-group">
+                            <label htmlFor="dateOfBirth">Date de naissance</label>
+                            <input type="date" className="form-control" id="dateOfBirth" placeholder="Date de naissance" name="dateOfBirth" onChange={onInputChanged} />
+                            <span className="errorMessage">{formError.dateOfBirth.length > 0 && formError.dateOfBirth[formError.dateOfBirth.length - 1] !== '' && formError.dateOfBirth[formError.dateOfBirth.length - 1]}</span>
+                        </div>
+                    </Col>
+                    <Col>
+                        <div className="form-group">
+                            <label htmlFor="password">Mot de passe</label>
+                            <input type="password" className="form-control" id="password" placeholder="Mot de passed" name="password" onChange={onInputChanged} />
+                            <span className="errorMessage">{formError.password.length > 0 && formError.password[formError.password.length - 1] !== '' && formError.password[formError.password.length - 1]}</span>
+                        </div>
+                    </Col>
+                </Row>
             </form>
         </div>
     );
