@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route , Switch } from 'react-router-dom';
 import Inscription from './Inscription/Inscription';
 import AnnoncesList from './Annonces/AnnoncesList/AnnoncesList'
 import CreateAnnonce from './Annonces/CreateAnnonce/CreateAnnonce'
-import Connexion from './connexion/Connexion';
+import Connexion from './Connexion/Connexion';
 import { NavigationWithHistory } from './navigation/Navigation';
 import { useDispatch } from 'react-redux';
 import { connection } from './reducer/userSlice';
@@ -49,7 +49,7 @@ function App() {
           <Route path="/Connexion">
             <Connexion />
           </Route>
-          <Route exact path="/CreateAnnonce">
+          <Route path="/CreateAnnonce">
             <CreateAnnonce />
           </Route>
           <Route path="/">
