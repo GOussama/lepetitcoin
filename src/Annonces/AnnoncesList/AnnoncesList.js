@@ -3,12 +3,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { addAnnonce } from "../../store/action";
 import { Provider, connect } from "react-redux";
 
-const mapStateToProps = (state) => {
-  const annonces = state;
-  console.log("state from mapStateToProps : ", state);
-
-  return annonces;
-};
 
 class AnnoncesList extends React.PureComponent {
   constructor(props) {
@@ -28,11 +22,24 @@ class AnnoncesList extends React.PureComponent {
       <div className="row">
         <div className="col-md-12">
         <h1>List des annonces est {this.props.annonces.length}</h1>
+        <span>
+            {
+              this.props.annonces.map(el => <option value={el} key={el.id}> {el.id} </option>)
+            }
+        </span>
           <button onClick={this.handleClick}>Activate Lasers</button>
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  const annonces = state;
+  console.log("state from mapStateToProps : ", state);
+
+  return annonces;
+};
+
 
 export default connect(mapStateToProps, { addAnnonce })(AnnoncesList);
