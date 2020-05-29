@@ -43,17 +43,17 @@ function App() {
       <Router>
         <NavigationWithHistory />
         <Switch>
-          <Route path="/">
-            <AnnoncesList />
-          </Route>
           <Route path="/Inscription">
             <Inscription />
           </Route>
           <Route path="/Connexion">
             <Connexion />
           </Route>
-          <Route path="/CreateAnnonce">
+          <Route exact path="/CreateAnnonce">
             <CreateAnnonce />
+          </Route>
+          <Route path="/">
+            <AnnoncesList />
           </Route>
         </Switch>        
       </Router>
