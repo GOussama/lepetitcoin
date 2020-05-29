@@ -4,6 +4,7 @@ import './Inscription.css';
 import { Row, Col } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../reducer/userSlice'
+import axios from 'axios';
 
 export default function Inscription() {
 
@@ -112,9 +113,12 @@ export default function Inscription() {
         if (validateAllInput()) {
             const {name, firstname, email, sex, dateOfBirth} = formValue;
             localStorage.setItem('login', email);
-            dispatch(addUser({ name, firstname, email, sex, dateOfBirth }));
+            
+            axios.post('http://localhost:3000/users', formValue)
+            .then(res => console.log(res))
+            .catch(error => console.error(error));
 
-            //Add redirection
+            dispatch(addUser({ name, firstname, email, sex, dateOfBirth }));            
             history.push('/');
         }
     };
