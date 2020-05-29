@@ -23,12 +23,12 @@ const Navigation = () => {
         <Navbar bg="dark" variant="dark">
             <Navbar.Brand href="/">LePetitCoin</Navbar.Brand>
             <Nav className="mr-auto">
-                <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/">Mes annonces ({annonces.length})</Nav.Link>
-                <Nav.Link href="/">Nouvelle annonce</Nav.Link>
+                {/* <Nav.Link href="/">Home</Nav.Link> */}
+                {login !== '' && <Nav.Link href="/">Mes annonces ({annonces.length})</Nav.Link>}
             </Nav>
             {login !== '' && <Navbar.Text className="mr-2">{login} est en ligne</Navbar.Text>}
-            <Nav className="mr-right">                
+            <Nav className="mr-right">   
+                {login !== '' && <Nav.Link href="/CreateAnnounce">Nouvelle annonce</Nav.Link>}             
                 {login !== '' && <Button variant="outline-info" onClick={loggingOut}>Déconnexion</Button>}
                 {login === '' && <Nav.Link href="/Connexion">Se connecter</Nav.Link>}
                 {login === '' && <Nav.Link href="/Inscription">S'inscrire</Nav.Link>}

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { selectValue, add } from '../../reducer/annoncesSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import './AnnoncesList.css'
 
-export default function AnnoncesList() {
+export default function CreateAnnonce() {
 
-  console.log("AnnoncesList")
-
+  console.log("CreateAnnonce")
 
   const annonces = useSelector(selectValue);
   const dispatch = useDispatch();
@@ -28,18 +26,15 @@ export default function AnnoncesList() {
 
   return (
     <div>
-      <div className="container annonces-list">
-        {annonces.map(annonce => <div key={annonce.id}>
-          <div className="card">
-          <div className="card-body">
-            <h5 className="card-title">{annonce.title}</h5>
-            <p className="card-text">{annonce.description}</p>
-            <p className="card-text">{annonce.prix}</p>
-            <a href="#" className="btn btn-primary">Contacter</a>
-          </div>
-        </div>
-        </div>)}
+      <div className="form-group">
+        <label htmlFor="title">Title :</label>
+        <input type="text" className="form-control" id="title" value={formValue.title} name="title" onChange={onInputChanged}/>
       </div>
+      <div className="form-group">
+        <label htmlFor="description">Description :</label>
+        <input type="text" className="form-control" id="title" value={formValue.description} name="description" onChange={onInputChanged}/>
+      </div>
+      <button className="btn btn-primary" onClick={addAnnonce}>Ajouter</button>
     </div>
   );
 }

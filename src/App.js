@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route , Switch } from 'react-router-dom';
-import Inscription from './inscription/Inscription';
+import Inscription from './Inscription/Inscription';
 import AnnoncesList from './Annonces/AnnoncesList/AnnoncesList'
+import CreateAnnonce from './Annonces/CreateAnnonce/CreateAnnonce'
 import Connexion from './connexion/Connexion';
 import { NavigationWithHistory } from './navigation/Navigation';
 import { useDispatch } from 'react-redux';
@@ -30,13 +31,21 @@ function App() {
       <Router>
         <NavigationWithHistory/>
         <Switch>
+          <Route path="/">
+            <AnnoncesList />
+          </Route>
           <Route path="/Inscription">
-            <Inscription/>
+            <Inscription />
           </Route>
           <Route path="/Connexion">
             <Connexion />
           </Route>
-          <Route path="/"><AnnoncesList /></Route>
+          <Route path="/CreateAnnonce">
+            <CreateAnnonce />
+          </Route>
+          {/* <Route path="/">
+            <AnnoncesList />
+          </Route> */}
         </Switch>        
       </Router>
     </div>

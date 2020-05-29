@@ -10,8 +10,8 @@ export default function () {
     const history = useHistory();
 
     const defaultValue = {
-        login: '',
-        password: '',
+        login: 'admin',
+        password: 'admin',
         errorMessage: ''
     };
     const [formValue, setFormValue] = useState(defaultValue);
