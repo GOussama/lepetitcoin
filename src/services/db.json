@@ -1,0 +1,10 @@
+{
+    "annonces": [
+        { "id": 0, "title": "annonce_1" },
+        { "id": 1, "title": "annonce_2" }
+    ],
+    "users": [
+        { "id": 0, "name": "name_1", "firstname": "firstname_1", "sex": "male", "dateOfBirth": "2020/10/10", "email": "email_1@gmail.com", "password": "12345678" },
+        { "id": 1, "name": "name_2", "firstname": "firstname_2", "sex": "male", "dateOfBirth": "2020/10/10", "email": "email_2@gmail.com", "password": "12345678" }
+    ]
+}
