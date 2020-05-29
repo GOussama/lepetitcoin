@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import { connection } from '../reducer/userSlice';
@@ -22,6 +22,12 @@ export default function () {
         const inputName = e.target.name;
         setFormValue({ ...formValue, [inputName]: inputValue })
     }
+
+    useEffect(() => {
+        const login = localStorage.getItem("login");
+        if (login !== '' && login !== null && login !== undefined)
+            history.push("/");
+    });
 
     const identifyUser = () => {
         const { login, password } = formValue;

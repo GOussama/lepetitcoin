@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import './Inscription.css';
 import { Row, Col } from 'react-bootstrap';
@@ -30,6 +30,12 @@ export default function Inscription() {
         password: []
     }
     const [formError, setFormError] = useState(defaultError);
+
+    useEffect(() => {
+        const login = localStorage.getItem("login");
+        if (login !== '' && login !== null && login !== undefined)
+            history.push("/");
+    });
 
     const onInputChanged = (e) => {
         const inputValue = e.target.value;

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { selectValue, add } from '../../reducer/annoncesSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import './AnnoncesList.css'
+import { useHistory } from 'react-router-dom'
 
 export default function AnnoncesList() {
 
@@ -10,6 +11,13 @@ export default function AnnoncesList() {
 
   const annonces = useSelector(selectValue);
   const dispatch = useDispatch();
+
+  const history = useHistory();
+  useEffect(() => {
+    const login = localStorage.getItem("login");
+    if (login === '' || login === null || login === undefined)
+      history.push("/Connexion");
+  });
 
   const defaultValue = { title: '' };
   const [formValue, setFormValue] = useState(defaultValue);

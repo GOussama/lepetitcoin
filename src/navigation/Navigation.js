@@ -16,7 +16,7 @@ const Navigation = () => {
     const loggingOut = () => {
         dispatch(logout());
         localStorage.removeItem('login');
-        history.push('/');
+        history.push('/Connexion');
     }
 
     return (
